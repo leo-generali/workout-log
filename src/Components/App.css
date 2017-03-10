@@ -1,0 +1,11 @@
+
+
+.header {
+  height: 100px;
+  background: linear-gradient(to left, #00d2ff , #3a7bd5); 
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
