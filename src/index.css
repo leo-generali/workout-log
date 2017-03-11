@@ -1,5 +1,7 @@
 :root {
-  --main-bg-color: #494DA1;
+  --main-bg-color: #FAFAFA;
+  --main-font-color: #333333;
+  --main-header-color: white;
 }
 
 body {
@@ -16,5 +18,7 @@ body {
              "Open Sans",
              "Helvetica Neue", 
              sans-serif;
-  color: white;
+
+  background-color: var(--main-bg-color);
+  color: var(--main-font-color);
 }

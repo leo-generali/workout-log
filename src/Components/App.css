@@ -1,9 +1,9 @@
-
-
 .header {
   height: 100px;
   background: linear-gradient(to left, #00d2ff , #3a7bd5); 
   clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  color: var(--main-header-color);
+
 
   display: flex;
   align-items: center;
