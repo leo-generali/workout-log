@@ -10,7 +10,7 @@ class Log extends Component {
         <input
           type="checkbox"
           name="timeActivity"
-          onChange={this.timeActivity}
+          onChange={this.props.timeActivity}
         />
         <input
           type="text"

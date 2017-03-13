@@ -10,6 +10,7 @@ class App extends Component {
     super();
 
     this.addWorkout=this.addWorkout.bind(this);
+    this.removeItem=this.removeItem.bind(this);
 
     this.state = {
       workoutNames: [],
@@ -44,22 +45,32 @@ class App extends Component {
     e.target.reset();
   }
 
+  removeItem = (e) => {
+    const target = Number(e.target.value);
+    const newArr = this.state.workoutLog.filter(function(el){
+      return (el.key !== target)
+    });
+    this.setState({
+      workoutLog: newArr
+    })
+  }
+
   render() {
 
     const dateTodayStr = formatDate(new Date());
+
     return (
       <div>
         <header className='header'>
           <h1>{dateTodayStr}</h1>
         </header>
-        <div className="log">
-          <Log 
-            addWorkout={this.addWorkout}
-          />
-          <WorkoutItems
-            log={this.state.workoutLog}
-          />
-        </div>
+        <Log 
+          addWorkout={this.addWorkout}
+        />
+        <WorkoutItems
+          log={this.state.workoutLog}
+          removeItem={this.removeItem}
+        />
       </div>
     );
   }
