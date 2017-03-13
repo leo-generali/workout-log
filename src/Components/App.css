@@ -1,8 +1,14 @@
 .header {
   height: 100px;
-  background: linear-gradient(to left, #00d2ff , #3a7bd5); 
+  background: linear-gradient(to top left, #9761E8, #3E9BE3); 
   clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
   color: var(--main-header-color);
+  text-shadow: 
+     -1px -1px 0 var(--main-header-outline),  
+      1px -1px 0 var(--main-header-outline),
+      -1px 1px 0 var(--main-header-outline),
+       1px 1px 0 var(--main-header-outline);
+
 
 
   display: flex;

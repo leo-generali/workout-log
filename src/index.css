@@ -1,7 +1,8 @@
 :root {
   --main-bg-color: #FAFAFA;
   --main-font-color: #333333;
-  --main-header-color: white;
+  --main-header-color: #FFFFFF;
+  --main-header-outline: #6657a1;
 }
 
 body {
