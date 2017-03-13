@@ -3,6 +3,8 @@
   --main-font-color: #333333;
   --main-header-color: #FFFFFF;
   --main-header-outline: #6657a1;
+  --add-button: #48B6C2 ;
+  --main-header-outline: #6657a1;
 }
 
 body {
@@ -19,6 +21,8 @@ body {
              "Open Sans",
              "Helvetica Neue", 
              sans-serif;
+
+  font-size: 2rem;
 
   background-color: var(--main-bg-color);
   color: var(--main-font-color);

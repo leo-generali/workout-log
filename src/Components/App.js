@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './app.css';
 import { formatDate } from '../helpers';
 import Calendar from './Calendar';
 import Log from './Log';
@@ -8,9 +8,28 @@ class App extends Component {
   constructor(){
     super();
 
-    this.state = {};
+    this.addWorkout=this.addWorkout.bind(this);
+
+    this.state = {
+      workoutNames: [],
+      workoutLog: []
+    };
   }
 
+  addWorkout = (e) =>{
+    e.preventDefault();
+
+    const workout = e.currentTarget.workout.value;
+    const workoutLog = this.state.workoutLog;
+
+    workoutLog.push(workout);
+
+    this.setState({
+      workoutLog: workoutLog
+    });
+
+    e.target.reset();
+  }
 
   render() {
 
@@ -20,8 +39,10 @@ class App extends Component {
         <header className='header'>
           <h1>{dateTodayStr}</h1>
         </header>
-        <Calendar />
-        <Log />
+        <Calendar/>
+        <Log 
+          addWorkout={this.addWorkout}
+        />
       </div>
     );
   }

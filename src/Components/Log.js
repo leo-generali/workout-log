@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
+import './formreset.css';
+import './log.css';
 
 class Log extends Component {
 
   render() {
     return(
+      <form className="workoutLog" onSubmit={this.props.addWorkout}>
+        <input
+          type="text"
+          name="workout"
+          placeholder="Enter workout."
 
-      <p>I am log.</p>
-
+        />
+        <button type="submit">+</button>
+      </form>
     )
   }
 }
