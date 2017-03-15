@@ -12,8 +12,9 @@ class WorkoutItems extends Component {
     function addLog(item){
       return(
         <li key={item.key}>
-          {item.text + " " + item.sets + " " + item.reps}
+          {item.text + " " + item.sets + " " + item.reps + " " + item.weight}
           <button
+            className="remove-btn"
             onClick={that.props.removeItem}
             value={item.key}>
             X

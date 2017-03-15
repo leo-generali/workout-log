@@ -27,6 +27,7 @@ class App extends Component {
     const workout = e.currentTarget.workout.value;
     const reps = e.currentTarget.reps.value;
     const sets = e.currentTarget.sets.value;
+    const weight = e.currentTarget.weight.value;
     
     const workoutLog = this.state.workoutLog;
 
@@ -35,7 +36,8 @@ class App extends Component {
       activityType: activityType,
       text: workout,
       reps: reps,
-      sets: sets
+      sets: sets,
+      weight: weight
     });
 
     this.setState({
@@ -46,6 +48,8 @@ class App extends Component {
   }
 
   removeItem = (e) => {
+    //To-Do: Replace this function with one that looks at index. 
+    //Filter is SLOW.
     const target = Number(e.target.value);
     const newArr = this.state.workoutLog.filter(function(el){
       return (el.key !== target)
@@ -64,13 +68,15 @@ class App extends Component {
         <header className='header'>
           <h1>{dateTodayStr}</h1>
         </header>
-        <Log 
-          addWorkout={this.addWorkout}
-        />
-        <WorkoutItems
-          log={this.state.workoutLog}
-          removeItem={this.removeItem}
-        />
+        <main className="log">
+          <Log 
+            addWorkout={this.addWorkout}
+          />
+          <WorkoutItems
+            log={this.state.workoutLog}
+            removeItem={this.removeItem}
+          />
+        </main>
       </div>
     );
   }

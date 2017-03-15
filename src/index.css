@@ -2,13 +2,14 @@
   --main-bg-color: #FAFAFA;
   --main-font-color: #333333;
   --main-header-color: #FFFFFF;
-  --main-header-outline: #6657a1;
 
   --form-add-button: #48B6C2;
   --form-rep: #FFCB5D;
   --form-rep-font: #9d792c;
   --form-set: #FF655D;
   --form-set-font: #C01E16;
+  --form-weight: #A39AC6;
+  --form-weight-font: #6657a1;
 
   --workout-item: #D0D0CC;
 }

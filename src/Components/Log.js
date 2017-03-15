@@ -27,7 +27,17 @@ class Log extends Component {
           name="reps"
           type="number"
         />
-        <button type="submit">+</button>
+        <input
+          className="repeat repeat--weight"
+          name="weight"
+          type="number"
+        />
+        <button 
+          className="submit-btn"
+          type="submit"
+        >
+        +
+        </button>
       </form>
     )
   }

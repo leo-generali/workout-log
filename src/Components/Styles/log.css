@@ -4,7 +4,7 @@ input {
   margin-left: 10px;
 }
 
-button {
+.submit-btn {
   font-size: 1em;
   height: 1.25em;
   width: 1.25em;
@@ -17,14 +17,11 @@ button {
   color: #FFF;
 }
 
-button:hover {
+.submit-btn:hover {
   cursor: pointer;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
-.workoutLog {
-  text-align: center;
-}
 
 .repeat {
   border-bottom: none;
@@ -45,4 +42,9 @@ button:hover {
 .repeat--rep{
   background-color: var(--form-rep);
   color: var(--form-rep-font);
+}
+
+.repeat--weight{
+  background-color: var(--form-weight);
+  color: var(--form-weight-font);
 }
