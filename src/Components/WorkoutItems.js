@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './Styles/workoutitems.css'
+import Dragula from 'react-dragula';
+import './Styles/workoutitems.css';
 
 class WorkoutItems extends Component {
 
@@ -11,8 +12,19 @@ class WorkoutItems extends Component {
 
     function addLog(item){
       return(
-        <li key={item.key}>
-          {item.text + " " + item.sets + " " + item.reps + " " + item.weight}
+        <li className="log-list-item" key={item.key}>
+          <span className="log-item log-item--text">
+          {item.text}
+          </span>
+          <span className="log-item log-item--sets">
+          {item.sets}
+          </span>
+          <span className="log-item log-item--reps">
+          {item.reps}
+          </span>
+          <span className="log-item log-item--weight">
+          {item.weight}
+          </span>
           <button
             className="remove-btn"
             onClick={that.props.removeItem}
@@ -26,11 +38,19 @@ class WorkoutItems extends Component {
     const listItems = log.map(addLog);
 
     return(
-      <ul className="WorkoutItems">
+      <ul className="WorkoutItems" ref={this.dragulaDecorator}>
         {listItems}
       </ul>
     )
   }
+
+  dragulaDecorator = (componentBackingInstance) => {
+    if (componentBackingInstance) {
+      console.log(componentBackingInstance);
+      Dragula([componentBackingInstance]);
+    }
+  }
+
 }
 
 export default WorkoutItems;

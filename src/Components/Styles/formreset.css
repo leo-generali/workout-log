@@ -89,8 +89,7 @@ input[type=week]
 input[type=checkbox],
 input[type=radio]
 {
-  width:13px;
-  height:13px;
+
 }
 
 /* File Uploads
