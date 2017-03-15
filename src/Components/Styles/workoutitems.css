@@ -1,3 +1,44 @@
+.workout-items {
+  margin-top: 1rem;
+}
+
 .log-list-item {
-  width: 300px;
+  font-size: 1rem;
+  width: 250px;
+
+  display: flex;
+  align-items: center;
+}
+
+.log-item {
+  text-align: center;
+  padding: 5px;
+  width: 1.5rem;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.log-item--sets {
+  margin-left: auto;
+  box-shadow: 0 0 0 0.5pt var(--form-set);
+}
+
+.log-item--reps {
+  box-shadow: 0 0 0 0.5pt var(--form-rep);
+}
+
+.log-item--weight {
+  box-shadow: 0 0 0 0.5pt var(--form-weight);
+}
+
+
+@media (min-width: 450px) {
+  .log-list-item {
+    font-size: 1.5rem;
+    width: 350px;
+
+    display: flex;
+    align-items: center;
+  }
+
 }

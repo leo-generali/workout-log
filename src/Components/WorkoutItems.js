@@ -10,7 +10,7 @@ class WorkoutItems extends Component {
     function addLog(item){
       return(
         <li className="log-list-item" key={item.key}>
-          <span className="log-item log-item--text">
+          <span className="log-text">
           {item.text}
           </span>
           <span className="log-item log-item--sets">
@@ -35,7 +35,7 @@ class WorkoutItems extends Component {
     const listItems = log.map(addLog);
 
     return(
-      <ul className="WorkoutItems">
+      <ul className="workout-items">
         {listItems}
       </ul>
     )

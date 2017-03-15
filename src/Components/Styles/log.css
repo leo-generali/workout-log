@@ -1,9 +1,19 @@
-input {
+.input-text {
   border-bottom: 1px dotted black;
   height: 2rem;
   margin-left: 10px;
+  width: 100px;
 }
 
+.remove-btn {
+  padding: 10px;
+}
+
+.remove-btn:hover {
+  transition: 0.15s;
+  cursor: pointer;
+  color: red;
+}
 
 .repeat {
   border-bottom: none;
@@ -14,21 +24,9 @@ input {
 
   text-align: center;
   width: 2rem;
-}
 
-.repeat--add{
-  font-size: 2rem;
-  font-weight: normal;
-  background-color: var(--form-add-button);
-  color: #FFF;
   height: 2rem;
   margin-left: 10px;
-}
-
-.repeat--add:hover {
-  transition: 0.15s;
-  cursor: pointer;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .repeat--set{
@@ -44,4 +42,37 @@ input {
 .repeat--weight{
   background-color: var(--form-weight);
   color: var(--form-weight-font);
+}
+
+.repeat--add{
+  position: absolute;
+  bottom: 20px; 
+  right: 20px; 
+  font-size: 2rem;
+  font-weight: normal;
+  background-color: var(--form-add-button);
+  color: #FFF;
+  height: 3rem;
+  width: 3rem;
+}
+
+.repeat--add:hover {
+  transition: 0.15s;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+@media (min-width: 450px) {
+  .input-text {
+    width: 150px;
+  }
+
+  .repeat--add{
+    position: initial;
+    height: 2rem;
+    width: 2rem;
+    margin-left: 10px;
+  }
+
+
 }

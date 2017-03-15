@@ -15,6 +15,7 @@ class Log extends Component {
         <input
           type="text"
           name="workout"
+          className="input-text"
           placeholder="Enter workout."
         />
         <input
