@@ -33,7 +33,7 @@ class Log extends Component {
           type="number"
         />
         <button 
-          className="submit-btn"
+          className="repeat repeat--add"
           type="submit"
         >
         +

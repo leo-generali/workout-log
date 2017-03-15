@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import Dragula from 'react-dragula';
 import './Styles/workoutitems.css';
 
 class WorkoutItems extends Component {
-
-
   render() {
     const that = this;
 
@@ -38,19 +35,11 @@ class WorkoutItems extends Component {
     const listItems = log.map(addLog);
 
     return(
-      <ul className="WorkoutItems" ref={this.dragulaDecorator}>
+      <ul className="WorkoutItems">
         {listItems}
       </ul>
     )
   }
-
-  dragulaDecorator = (componentBackingInstance) => {
-    if (componentBackingInstance) {
-      console.log(componentBackingInstance);
-      Dragula([componentBackingInstance]);
-    }
-  }
-
 }
 
 export default WorkoutItems;
