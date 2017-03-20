@@ -12,10 +12,20 @@ class App extends Component {
     this.addWorkout=this.addWorkout.bind(this);
     this.removeItem=this.removeItem.bind(this);
 
-    this.state = {
-      workoutNames: [],
-      workoutLog: []
-    };
+    const initialState =  JSON.parse(localStorage.getItem( "userLog" ));
+
+    if(initialState){
+      this.state = {
+        workoutNames: [],
+        workoutLog: initialState
+      };
+      console.log(initialState);
+    }else{
+      this.state = {
+        workoutNames: [],
+        workoutLog: []
+      };      
+    }
   }
 
   addWorkout = (e) =>{
@@ -44,6 +54,10 @@ class App extends Component {
       workoutLog: workoutLog
     });
 
+    localStorage.setItem( "userLog", JSON.stringify(workoutLog) );
+
+    console.log( JSON.parse (localStorage.getItem( "userLog" ) ) );
+
     e.target.reset();
   }
 
@@ -57,6 +71,10 @@ class App extends Component {
     this.setState({
       workoutLog: newArr
     })
+    
+    localStorage.setItem( "userLog", JSON.stringify(newArr) );
+
+    console.log( JSON.parse (localStorage.getItem( "userLog" ) ) );
   }
 
   render() {
