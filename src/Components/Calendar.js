@@ -3,7 +3,14 @@ import React, { Component } from 'react';
 class Calendar extends Component {
   render() {
     return(
-      <h1>I am Calendar</h1>
+      <form onSubmit={this.props.changeDate}>
+        <label>Select Date:</label>
+        <input 
+          type="date"
+          name="date" 
+        />
+        <input type="submit" />
+      </form>  
     )
   }
 }

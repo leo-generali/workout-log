@@ -4,6 +4,7 @@ import { formatDate } from '../helpers';
 import Calendar from './Calendar';
 import Log from './Log';
 import WorkoutItems from './WorkoutItems';
+import Submit from './Submit';
 
 class App extends Component {
   constructor(){
@@ -11,6 +12,8 @@ class App extends Component {
 
     this.addWorkout=this.addWorkout.bind(this);
     this.removeItem=this.removeItem.bind(this);
+    this.changeDate=this.changeDate.bind(this);
+    this.saveDate=this.saveDate.bind(this);
 
     const initialState =  JSON.parse(localStorage.getItem( "userLog" ));
 
@@ -19,7 +22,6 @@ class App extends Component {
         workoutNames: [],
         workoutLog: initialState
       };
-      console.log(initialState);
     }else{
       this.state = {
         workoutNames: [],
@@ -40,6 +42,8 @@ class App extends Component {
     const weight = e.currentTarget.weight.value;
     
     const workoutLog = this.state.workoutLog;
+
+    console.log(workoutLog);
 
     workoutLog.push({
       key: date,
@@ -77,6 +81,19 @@ class App extends Component {
     console.log( JSON.parse (localStorage.getItem( "userLog" ) ) );
   }
 
+  changeDate = (e) => {
+    e.preventDefault();
+
+    console.log(e.currentTarget.date.value);
+    console.log(new Date());
+    console.log(formatDate(new Date()));
+  }
+
+  saveDate = (e) => {
+    e.preventDefault();
+    console.log("TEST");
+  }
+
   render() {
 
     const dateTodayStr = formatDate(new Date());
@@ -87,6 +104,8 @@ class App extends Component {
           <h1>{dateTodayStr}</h1>
         </header>
         <main className="log">
+          <Calendar 
+            changeDate={this.changeDate}/>
           <Log 
             addWorkout={this.addWorkout}
           />
@@ -94,7 +113,11 @@ class App extends Component {
             log={this.state.workoutLog}
             removeItem={this.removeItem}
           />
+          <Submit
+            saveDate={this.saveDate}
+          />
         </main>
+
       </div>
     );
   }
