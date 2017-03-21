@@ -26,3 +26,12 @@ export function keyDate(date) {
 
   return yyyy + '-' + mm + '-' + ddd;
 }
+
+export function arrayDate(date) {
+  const dateArrString = date.split('-');
+  const dateArrNum = dateArrString.map(function(str){
+    return parseInt(str, 10);
+  })
+
+  return dateArrNum;
+}

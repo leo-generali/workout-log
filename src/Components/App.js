@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Styles/app.css';
-import { formatDate, keyDate } from '../helpers';
+import { formatDate, keyDate, arrayDate } from '../helpers';
 import Calendar from './Calendar';
 import Log from './Log';
 import WorkoutItems from './WorkoutItems';
@@ -82,20 +82,20 @@ class App extends Component {
     e.preventDefault();
 
     const willChangeToDate = e.currentTarget.date.value;
+    const formattedwillChangeToDate = formatDate(new Date(arrayDate(willChangeToDate)));
+
+    //Need to add error handling to this for user switch
 
     const futureLogToDisplay = this.state.workoutLog[willChangeToDate].log;
 
-    this.setState({currentLog: futureLogToDisplay});
 
-    console.log(futureLogToDisplay);
-    console.log(e.currentTarget.date.value);
-    console.log(new Date());
-    console.log(keyDate(new Date()));
+    this.setState({
+      currentDate: formattedwillChangeToDate,
+      currentLog: futureLogToDisplay
+    });
   }
 
   saveDate = (e) => {
-    //e.preventDefault();
-
     const dateTodayStr = keyDate(new Date());
     const test = "2017-01-01";
 
@@ -107,9 +107,6 @@ class App extends Component {
     const tempFullLog = this.state.workoutLog;
 
     tempFullLog[dateTodayStr] = entry;
-
-    console.log(test);
-    console.log(tempFullLog[test]);
   }
 
   render() {
