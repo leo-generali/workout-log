@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Styles/app.css';
-import { formatDate } from '../helpers';
+import { formatDate, keyDate } from '../helpers';
 import Calendar from './Calendar';
 import Log from './Log';
 import WorkoutItems from './WorkoutItems';
@@ -17,9 +17,10 @@ class App extends Component {
 
     this.state = {
       workoutNames: [],
+      currentDate: formatDate(new Date()),
       currentLog: [],
       workoutLog: {
-        "Monday, March 19, 2017": {
+        "2017-01-01": {
           log: [
             {
               activityType:false,
@@ -80,16 +81,23 @@ class App extends Component {
   changeDate = (e) => {
     e.preventDefault();
 
+    const willChangeToDate = e.currentTarget.date.value;
+
+    const futureLogToDisplay = this.state.workoutLog[willChangeToDate].log;
+
+    this.setState({currentLog: futureLogToDisplay});
+
+    console.log(futureLogToDisplay);
     console.log(e.currentTarget.date.value);
     console.log(new Date());
-    console.log(formatDate(new Date()));
+    console.log(keyDate(new Date()));
   }
 
   saveDate = (e) => {
     //e.preventDefault();
 
-    const dateTodayStr = formatDate(new Date());
-    const test = "Monday, March 19, 2017";
+    const dateTodayStr = keyDate(new Date());
+    const test = "2017-01-01";
 
     const entry = {
       log: this.state.currentLog,
@@ -101,17 +109,15 @@ class App extends Component {
     tempFullLog[dateTodayStr] = entry;
 
     console.log(test);
-    console.log(tempFullLog["Monday, March 19, 2017"]);
+    console.log(tempFullLog[test]);
   }
 
   render() {
 
-    const dateTodayStr = formatDate(new Date());
-
     return (
       <div>
         <header className='header'>
-          <h1>{dateTodayStr}</h1>
+          <h1>{this.state.currentDate}</h1>
         </header>
         <main className="log">
           <Calendar 
@@ -122,9 +128,6 @@ class App extends Component {
           <WorkoutItems
             log={this.state.currentLog}
             removeItem={this.removeItem}
-          />
-          <Submit
-            saveDate={this.saveDate}
           />
         </main>
 

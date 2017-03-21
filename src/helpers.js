@@ -10,3 +10,19 @@ export function formatDate(date) {
 
   return days[dd] + ', ' + months[mm] + ' ' + ddd + ', ' + yyyy; 
 }
+
+export function keyDate(date) {
+  let ddd = date.getDate();
+  let mm = date.getMonth(); 
+  let yyyy = date.getFullYear();
+
+  if(ddd < 10){
+    ddd = "0" + ddd;
+  }
+
+  if(mm < 10){
+    mm = "0" + mm;
+  }
+
+  return yyyy + '-' + mm + '-' + ddd;
+}
