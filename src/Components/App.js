@@ -15,8 +15,6 @@ class App extends Component {
     this.changeDate=this.changeDate.bind(this);
     this.saveDate=this.saveDate.bind(this);
 
-    const initialState =  JSON.parse(localStorage.getItem( "userLog" ));
-
     this.state = {
       workoutNames: [],
       currentLog: [],
@@ -63,14 +61,8 @@ class App extends Component {
       weight: weight
     });
 
-    this.setState({
-      currentLog: currentLog
-    });
-
-    localStorage.setItem( "userLog", JSON.stringify(currentLog) );
-
-    console.log( JSON.parse (localStorage.getItem( "userLog" ) ) );
-
+    this.setState({currentLog: currentLog},this.saveDate)
+    
     e.target.reset();
   }
 
@@ -81,13 +73,8 @@ class App extends Component {
     const newArr = this.state.currentLog.filter(function(el){
       return (el.key !== target)
     });
-    this.setState({
-      currentLog: newArr
-    })
+    this.setState({currentLog: newArr},this.saveDate)
     
-    localStorage.setItem( "userLog", JSON.stringify(newArr) );
-
-    console.log( JSON.parse (localStorage.getItem( "userLog" ) ) );
   }
 
   changeDate = (e) => {
@@ -99,7 +86,7 @@ class App extends Component {
   }
 
   saveDate = (e) => {
-    e.preventDefault();
+    //e.preventDefault();
 
     const dateTodayStr = formatDate(new Date());
     const test = "Monday, March 19, 2017";
