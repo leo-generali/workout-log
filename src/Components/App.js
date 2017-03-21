@@ -17,17 +17,26 @@ class App extends Component {
 
     const initialState =  JSON.parse(localStorage.getItem( "userLog" ));
 
-    if(initialState){
-      this.state = {
-        workoutNames: [],
-        workoutLog: initialState
-      };
-    }else{
-      this.state = {
-        workoutNames: [],
-        workoutLog: []
-      };      
-    }
+    this.state = {
+      workoutNames: [],
+      currentLog: [],
+      workoutLog: {
+        "Monday, March 19, 2017": {
+          log: [
+            {
+              activityType:false,
+              key:1490061294674,
+              reps:"3",
+              sets:"3",
+              text:"Bicep Curl",
+              weight:"3"
+            }
+          ],
+          notes: "My fart smells "
+        }
+      }
+    };
+    
   }
 
   addWorkout = (e) =>{
@@ -41,11 +50,11 @@ class App extends Component {
     const sets = e.currentTarget.sets.value;
     const weight = e.currentTarget.weight.value;
     
-    const workoutLog = this.state.workoutLog;
+    const currentLog = this.state.currentLog;
 
-    console.log(workoutLog);
+    console.log(currentLog);
 
-    workoutLog.push({
+    currentLog.push({
       key: date,
       activityType: activityType,
       text: workout,
@@ -55,10 +64,10 @@ class App extends Component {
     });
 
     this.setState({
-      workoutLog: workoutLog
+      currentLog: currentLog
     });
 
-    localStorage.setItem( "userLog", JSON.stringify(workoutLog) );
+    localStorage.setItem( "userLog", JSON.stringify(currentLog) );
 
     console.log( JSON.parse (localStorage.getItem( "userLog" ) ) );
 
@@ -69,11 +78,11 @@ class App extends Component {
     //To-Do: Replace this function with one that looks at index. 
     //Filter is SLOW.
     const target = Number(e.target.value);
-    const newArr = this.state.workoutLog.filter(function(el){
+    const newArr = this.state.currentLog.filter(function(el){
       return (el.key !== target)
     });
     this.setState({
-      workoutLog: newArr
+      currentLog: newArr
     })
     
     localStorage.setItem( "userLog", JSON.stringify(newArr) );
@@ -91,7 +100,21 @@ class App extends Component {
 
   saveDate = (e) => {
     e.preventDefault();
-    console.log("TEST");
+
+    const dateTodayStr = formatDate(new Date());
+    const test = "Monday, March 19, 2017";
+
+    const entry = {
+      log: this.state.currentLog,
+      notes: "test"
+    };
+
+    const tempFullLog = this.state.workoutLog;
+
+    tempFullLog[dateTodayStr] = entry;
+
+    console.log(test);
+    console.log(tempFullLog["Monday, March 19, 2017"]);
   }
 
   render() {
@@ -110,7 +133,7 @@ class App extends Component {
             addWorkout={this.addWorkout}
           />
           <WorkoutItems
-            log={this.state.workoutLog}
+            log={this.state.currentLog}
             removeItem={this.removeItem}
           />
           <Submit
