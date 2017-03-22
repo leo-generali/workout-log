@@ -21,21 +21,7 @@ class App extends Component {
       currentDateKey: keyDate(new Date()),
       currentLog: [],
       currentNotes: "",
-      workoutLog: {
-        "2017-01-01": {
-          log: [
-            {
-              activityType:false,
-              key:1490061294674,
-              reps:"3",
-              sets:"3",
-              text:"Bicep Curl",
-              weight:"3"
-            }
-          ],
-          notes: "This was a good curl."
-        }
-      }
+      workoutLog: {}
     };
     
   }
@@ -83,28 +69,30 @@ class App extends Component {
   changeDate = (e) => {
     e.preventDefault();
 
-    const willChangeToDate = e.currentTarget.date.value;
-    const formattedwillChangeToDate = formatDate(new Date(arrayDate(willChangeToDate)));
+    const futureDate = e.currentTarget.date.value;
+    const formattedFutureDate = formatDate(new Date(arrayDate(futureDate)));
+    const log = this.state.workoutLog;
 
-    //Need to add error handling to this for user switch
-
-    const futureLogToDisplay = this.state.workoutLog[willChangeToDate].log;
-
+    if(log[futureDate]){
+      this.setState({
+        currentLog: log[futureDate].log
+      });
+    };
 
     this.setState({
-      currentDate: formattedwillChangeToDate,
-      currentLog: futureLogToDisplay
+      currentDate: formattedFutureDate,
+      currentDateKey: futureDate
     });
   }
 
-  updateWorkoutLog = (e) => {
+  updateWorkoutLog() {
     const date = this.state.currentDateKey;
     const log = this.state.workoutLog;
 
     log[date] = {
       log: this.state.currentLog,
       notes: this.state.currentNotes
-    }
+    };
 
     this.setState({
       workoutLog: log
@@ -130,7 +118,6 @@ class App extends Component {
             removeItem={this.removeItem}
           />
         </main>
-
       </div>
     );
   }
