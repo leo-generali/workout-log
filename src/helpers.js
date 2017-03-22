@@ -13,7 +13,7 @@ export function formatDate(date) {
 
 export function keyDate(date) {
   let ddd = date.getDate();
-  let mm = date.getMonth(); 
+  let mm = date.getMonth() + 1; 
   let yyyy = date.getFullYear();
 
   if(ddd < 10){

@@ -13,12 +13,14 @@ class App extends Component {
     this.addWorkout=this.addWorkout.bind(this);
     this.removeItem=this.removeItem.bind(this);
     this.changeDate=this.changeDate.bind(this);
-    this.saveDate=this.saveDate.bind(this);
+    this.updateWorkoutLog=this.updateWorkoutLog.bind(this);
 
     this.state = {
       workoutNames: [],
       currentDate: formatDate(new Date()),
+      currentDateKey: keyDate(new Date()),
       currentLog: [],
+      currentNotes: "",
       workoutLog: {
         "2017-01-01": {
           log: [
@@ -31,7 +33,7 @@ class App extends Component {
               weight:"3"
             }
           ],
-          notes: "My fart smells "
+          notes: "This was a good curl."
         }
       }
     };
@@ -62,7 +64,7 @@ class App extends Component {
       weight: weight
     });
 
-    this.setState({currentLog: currentLog},this.saveDate)
+    this.setState({currentLog: currentLog}, this.updateWorkoutLog);
     
     e.target.reset();
   }
@@ -74,8 +76,8 @@ class App extends Component {
     const newArr = this.state.currentLog.filter(function(el){
       return (el.key !== target)
     });
-    this.setState({currentLog: newArr},this.saveDate)
-    
+
+    this.setState({currentLog: newArr}, this.updateWorkoutLog);   
   }
 
   changeDate = (e) => {
@@ -95,18 +97,19 @@ class App extends Component {
     });
   }
 
-  saveDate = (e) => {
-    const dateTodayStr = keyDate(new Date());
-    const test = "2017-01-01";
+  updateWorkoutLog = (e) => {
+    const date = this.state.currentDateKey;
+    const log = this.state.workoutLog;
 
-    const entry = {
+    log[date] = {
       log: this.state.currentLog,
-      notes: "test"
-    };
+      notes: this.state.currentNotes
+    }
 
-    const tempFullLog = this.state.workoutLog;
+    this.setState({
+      workoutLog: log
+    });
 
-    tempFullLog[dateTodayStr] = entry;
   }
 
   render() {
