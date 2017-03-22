@@ -77,7 +77,12 @@ class App extends Component {
       this.setState({
         currentLog: log[futureDate].log
       });
-    };
+    }else{
+      this.setState({
+        currentLog: []
+      });
+    }
+
 
     this.setState({
       currentDate: formattedFutureDate,
