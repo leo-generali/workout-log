@@ -1,7 +1,6 @@
 .header {
   height: 100px;
   background: linear-gradient(to top left, #9761E8, #3E9BE3); 
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
   color: var(--main-header-color);
 
   font-size: 1.2rem;
