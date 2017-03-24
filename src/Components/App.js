@@ -11,6 +11,7 @@ class App extends Component {
     super();
 
     this.addWorkout=this.addWorkout.bind(this);
+    this.timeActivity=this.timeActivity.bind(this);
     this.removeItem=this.removeItem.bind(this);
     this.changeDate=this.changeDate.bind(this);
     this.updateWorkoutLog=this.updateWorkoutLog.bind(this);
@@ -83,7 +84,6 @@ class App extends Component {
       });
     }
 
-
     this.setState({
       currentDate: formattedFutureDate,
       currentDateKey: futureDate
@@ -105,6 +105,11 @@ class App extends Component {
 
   }
 
+  timeActivity = (e) => {
+    const isTimeActivity = e.currentTarget.checked;
+    console.log(isTimeActivity);
+  }
+
   render() {
 
     return (
@@ -114,9 +119,11 @@ class App extends Component {
         </header>
         <main className="log">
           <Calendar 
-            changeDate={this.changeDate}/>
+            changeDate={this.changeDate}
+          />
           <Log 
             addWorkout={this.addWorkout}
+            timeActivity={this.timeActivity}
           />
           <WorkoutItems
             log={this.state.currentLog}
