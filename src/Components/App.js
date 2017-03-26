@@ -4,7 +4,6 @@ import { formatDate, keyDate, arrayDate } from '../helpers';
 import Calendar from './Calendar';
 import Log from './Log';
 import WorkoutItems from './WorkoutItems';
-import Submit from './Submit';
 
 class App extends Component {
   constructor(){

@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
+import './Styles/calendar.css';
 
 class Calendar extends Component {
   render() {
     return(
-      <form onSubmit={this.props.changeDate}>
+      <form
+        className="calendar-form" 
+        onSubmit={this.props.changeDate}
+      >
         <label>Select Date:</label>
         <input 
           type="date"
           name="date" 
         />
-        <input type="submit" />
+        <button 
+          className="submit-btn"
+          type="submit" 
+        >Change Date</button>
       </form>  
     )
   }

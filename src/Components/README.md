@@ -13,7 +13,7 @@ TO-ADD
 ## Built With
 
 * [React](https://facebook.github.io/react/) - Front end library used.
-* [Create React App](https://github.com/facebookincubator/create-react-app) 
+* [Create React App](https://github.com/facebookincubator/create-react-app) - Used to kickstart React development. 
 
 ## Authors
 
