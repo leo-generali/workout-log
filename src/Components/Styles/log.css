@@ -96,19 +96,23 @@
 }
 
 @media (min-width: 450px) {
+  .workoutLog {
+    padding: 0 0 0 10px;
+  }
+
   .input-text {
     width: 150px;
   }
 
   .repeat--add{
     position: relative;
+    border-radius: 0 5px 5px 0;
 
     right: 0;
     bottom: 0;
 
-
-    height: 2rem;
-    width: 2rem;
+    height: 3.5rem;
+    width: 3rem;
     margin-left: 10px;
   }
 
