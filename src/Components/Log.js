@@ -13,26 +13,47 @@ class Log extends Component {
           onChange={this.props.timeActivity}
         />
         <input
+          className="input-text"
           type="text"
           name="workout"
-          className="input-text"
           placeholder="Enter workout."
         />
-        <input
-          className="repeat repeat--set"
-          name="sets"
-          type="number"
-        />
-        <input
-          className="repeat repeat--rep"
-          name="reps"
-          type="number"
-        />
-        <input
-          className="repeat repeat--weight"
-          name="weight"
-          type="number"
-        />
+
+        <div className="input-number">
+          <span
+            className="field field--set">
+            Sets
+          </span>
+          <input
+            className="repeat repeat--set"
+            name="sets"
+            type="number"
+          />
+        </div>
+
+        <div className="input-number">
+          <span
+            className="field field--rep">
+            Reps
+          </span>
+          <input
+            className="repeat repeat--rep"
+            name="reps"
+            type="number"
+          />
+        </div>
+
+        <div className="input-number">
+          <span
+            className="field field--weight">
+            Lbs
+          </span>
+          <input
+            className="repeat repeat--weight"
+            name="weight"
+            type="number"
+          />
+        </div>
         <button 
           className="repeat repeat--add"
           type="submit"
