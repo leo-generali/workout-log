@@ -28,16 +28,13 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const log = localStorage.getItem('log') 
+    const log = localStorage.getItem('log');
 
     if(log){
       this.setState({
         workoutLog: JSON.parse(log)
       })
     }
-
-
-
   }
 
   addWorkout = (e) =>{
@@ -80,8 +77,9 @@ class App extends Component {
     this.setState({currentLog: newArr}, this.updateWorkoutLog);   
   }
 
-  changeDate = (e) => {
+  changeDate = (e) => {  
     e.preventDefault();
+    console.log('currentLog');
 
     const futureDate = e.currentTarget.date.value;
     const formattedFutureDate = formatDate(new Date(arrayDate(futureDate)));
