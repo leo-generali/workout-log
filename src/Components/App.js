@@ -4,6 +4,7 @@ import { formatDate, keyDate, arrayDate } from '../helpers';
 import Calendar from './Calendar';
 import Log from './Log';
 import WorkoutItems from './WorkoutItems';
+import NotesItem from './NotesItem';
 
 class App extends Component {
   constructor(){
@@ -128,6 +129,7 @@ class App extends Component {
             log={this.state.currentLog}
             removeItem={this.removeItem}
           />
+          <NotesItem />
         </main>
       </div>
     );
