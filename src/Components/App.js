@@ -25,7 +25,19 @@ class App extends Component {
       currentNotes: "",
       workoutLog: {}
     };
-    
+  }
+
+  componentDidMount() {
+    const log = localStorage.getItem('log') 
+
+    if(log){
+      this.setState({
+        workoutLog: JSON.parse(log)
+      })
+    }
+
+
+
   }
 
   addWorkout = (e) =>{
@@ -106,6 +118,8 @@ class App extends Component {
       workoutLog: log
     });
 
+
+    localStorage.setItem('log', JSON.stringify(log) );
   }
 
   addNotes = (e) => {
