@@ -5,7 +5,7 @@ class NotesItem extends Component {
   render() {
     return(
       <div className="notes-area">
-        <p className="notes-area--header">Notes</p>
+        <p className="notes-area--header">Workout Notes</p>
         <textarea 
           onChange={this.props.addNotes}
           className="notes-area--textarea"

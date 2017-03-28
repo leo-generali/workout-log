@@ -1,13 +1,3 @@
-.calendar-form {
-  margin: 0.5rem 0;
-
-  background-color: #fff;
-  padding: 0.5rem;
-  border-bottom: none;
-  border-radius: 5px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-}
-
 .workoutLog {
   background-color: #fff;
   padding: 0.5rem;
