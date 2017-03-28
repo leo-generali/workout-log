@@ -15,6 +15,7 @@ class App extends Component {
     this.removeItem=this.removeItem.bind(this);
     this.changeDate=this.changeDate.bind(this);
     this.updateWorkoutLog=this.updateWorkoutLog.bind(this);
+    this.addNotes=this.addNotes.bind(this);
 
     this.state = {
       workoutNames: [],
@@ -72,15 +73,17 @@ class App extends Component {
 
     const futureDate = e.currentTarget.date.value;
     const formattedFutureDate = formatDate(new Date(arrayDate(futureDate)));
-    const log = this.state.workoutLog;
+    const log = this.state.workoutLog;  
 
     if(log[futureDate]){
       this.setState({
-        currentLog: log[futureDate].log
+        currentLog: log[futureDate].log,
+        currentNotes: log[futureDate].notes
       });
     }else{
       this.setState({
-        currentLog: []
+        currentLog: [],
+        currentNotes: ""
       });
     }
 
@@ -103,6 +106,12 @@ class App extends Component {
       workoutLog: log
     });
 
+  }
+
+  addNotes = (e) => {
+    const notes = e.target.value;
+
+    this.setState({currentNotes:notes}, this.updateWorkoutLog);
   }
 
   timeActivity = (e) => {
@@ -129,7 +138,10 @@ class App extends Component {
             log={this.state.currentLog}
             removeItem={this.removeItem}
           />
-          <NotesItem />
+          <NotesItem 
+            addNotes={this.addNotes}
+            notes={this.state.currentNotes}
+          />
         </main>
       </div>
     );

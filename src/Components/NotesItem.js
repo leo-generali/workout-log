@@ -6,7 +6,11 @@ class NotesItem extends Component {
     return(
       <div className="notes-area">
         <p className="notes-area--header">Notes</p>
-        <textarea className="notes-area--textarea" />
+        <textarea 
+          onChange={this.props.addNotes}
+          className="notes-area--textarea"
+          value={this.props.notes} 
+        />
       </div>
     )
   }
